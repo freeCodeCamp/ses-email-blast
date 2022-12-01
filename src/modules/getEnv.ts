@@ -26,7 +26,8 @@ import { ConfigInt } from "../interfaces/configInt";
  */
 export const getEnv = async (): Promise<ConfigInt> => {
   const results: ConfigInt = {
-    apiKey: "",
+    accessKeyId: "",
+    secretAccessKey: "",
     fromAddress: "",
     subject: "",
     valid: false,
@@ -42,22 +43,31 @@ export const getEnv = async (): Promise<ConfigInt> => {
   /**
    * Checks that all required environment variables are present!
    */
-  if (!process.env.SENDGRID_KEY) {
+  if (!process.env.AWS_KEY) {
     spinnies.fail("env-check", {
       color: "red",
-      text: "Missing SendGrid API key!",
+      text: "Missing AWS API key!",
     });
-    return results;
+    process.exit(1);
   }
-  results.apiKey = process.env.SENDGRID_KEY;
+  results.accessKeyId = process.env.AWS_KEY;
 
-  const fromAddress = process.env.SENDGRID_FROM;
+  if (!process.env.AWS_SECRET) {
+    spinnies.fail("env-check", {
+      color: "red",
+      text: "Missing AWS API secret!",
+    });
+    process.exit(1);
+  }
+  results.secretAccessKey = process.env.AWS_SECRET;
+
+  const fromAddress = process.env.FROM_ADDRESS;
   if (!fromAddress) {
     spinnies.fail("env-check", {
       color: "red",
       text: "Missing sender email address!",
     });
-    return results;
+    process.exit(1);
   }
   results.fromAddress = fromAddress;
 

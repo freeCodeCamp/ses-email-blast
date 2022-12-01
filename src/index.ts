@@ -1,4 +1,3 @@
-import sendgrid from "@sendgrid/mail";
 import chalk from "chalk";
 import { MultiBar, Presets } from "cli-progress";
 import dotenv from "dotenv";
@@ -7,11 +6,9 @@ import { prompt } from "inquirer";
 import { join } from "path";
 import { emailTest } from "./modules/emailTest";
 import { getBody } from "./modules/getBody";
-import { getBounced } from "./modules/getBounced";
 import { getEnv } from "./modules/getEnv";
 import { getValid } from "./modules/getValid";
 import { sendEmail } from "./modules/sendEmail";
-import { fetchSuppressedEmails } from "./modules/suppressed";
 import { barFormatter } from "./tools/barFormatter";
 dotenv.config();
 
@@ -24,28 +21,6 @@ dotenv.config();
   const configuration = await getEnv();
   if (!configuration.valid) {
     return;
-  }
-
-  /**
-   * Set the SendGrid API key
-   */
-  sendgrid.setApiKey(configuration.apiKey);
-
-  /**
-   * Prompt to fetch suppressed emails
-   */
-  const getSuppressedEmails = await prompt([
-    {
-      name: "confirmed",
-      message: chalk.cyan(
-        "Do you want to get the list of suppressed emails from SendGrid?"
-      ),
-      type: "confirm",
-    },
-  ]);
-
-  if (getSuppressedEmails.confirmed) {
-    await fetchSuppressedEmails(configuration);
   }
 
   /**
@@ -63,15 +38,6 @@ dotenv.config();
   const testStatus = await emailTest(configuration, body);
 
   if (!testStatus) {
-    return;
-  }
-
-  /**
-   * Get the list of bounced emails.
-   */
-  const bouncedList = await getBounced();
-
-  if (!bouncedList.length) {
     return;
   }
 
@@ -129,16 +95,10 @@ dotenv.config();
   const totalBar = progress.create(emailTotal, 0, { task: "Processed" });
   const sentBar = progress.create(emailTotal, 0, { task: "Sent" });
   const failedBar = progress.create(emailTotal, 0, { task: "Failed" });
-  const skippedBar = progress.create(emailTotal, 0, { task: "Skipped" });
 
   for (let i = 0; i < emailTotal; i++) {
     totalBar.increment();
     const targetEmail = validList[i];
-    if (bouncedList.includes(targetEmail.email)) {
-      skippedBar.increment();
-      logStream.write(`Skipped - ${targetEmail.email}\n`);
-      continue;
-    }
     const status = await sendEmail(configuration, targetEmail, body);
     if (!status.success) {
       failedBar.increment();

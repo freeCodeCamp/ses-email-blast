@@ -1,7 +1,7 @@
 {
-  "name": "sendgrid-experiment",
-  "version": "1.2.0",
-  "description": "A quick experiment with the SendGrid API",
+  "name": "ses-email-blast",
+  "version": "1.0.0",
+  "description": "CLI tool for sending emails through Amazon SES.",
   "main": "./prod/main.js",
   "scripts": {
     "build": "tsc",
@@ -13,15 +13,15 @@
     "type": "git",
     "url": "git+https://github.com/nhcarrigan/SendGrid-Experiment.git"
   },
-  "author": "Nicholas Carrigan",
+  "author": " Naomi Carrigan",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/nhcarrigan/SendGrid-Experiment/issues"
   },
   "homepage": "https://github.com/nhcarrigan/SendGrid-Experiment#readme",
   "engines": {
-    "node": "^16.8.0",
-    "npm": "^8.0.0"
+    "node": "^18.0.0",
+    "npm": "^9.0.0"
   },
   "devDependencies": {
     "@types/chai": "4.3.1",
@@ -44,8 +44,7 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@sendgrid/client": "^7.4.6",
-    "@sendgrid/mail": "^7.4.6",
+    "aws-sdk": "^2.1266.0",
     "chalk": "^4.1.2",
     "cli-progress": "^3.9.0",
     "dotenv": "^16.0.0",

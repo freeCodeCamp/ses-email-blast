@@ -68,7 +68,7 @@ export const emailTest = async (
 
   const success = await sendEmail(config, testEmailObject, body);
 
-  if (!success) {
+  if (success.status === "FAILED" || success.status === "ERROR") {
     spinnies.fail("test-email", {
       color: "red",
       text: "Failed to send test email.",

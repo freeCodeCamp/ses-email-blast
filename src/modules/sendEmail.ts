@@ -1,8 +1,7 @@
-import sendgrid, { MailDataRequired } from "@sendgrid/mail";
+import AWS from "aws-sdk";
 import { ConfigInt } from "../interfaces/configInt";
 import { EmailInt } from "../interfaces/emailInt";
 import { sendReportInt } from "../interfaces/sendReportInt";
-import ResponseError from "@sendgrid/helpers/classes/response-error";
 
 /**
  * Sends an email with the passed configuration and body to the passed email address.
@@ -28,38 +27,53 @@ export const sendEmail = async (
       logText: `Email or Unsubscribe ID missing...`,
     };
   }
+
+  /**
+   * Set the AWS API key
+   */
+  const awsConfig = new AWS.Config({
+    credentials: {
+      accessKeyId: config.accessKeyId,
+      secretAccessKey: config.secretAccessKey,
+    },
+    region: "us-east-1",
+  });
   /**
    * Construct SendGrid message object.
    */
-  const message: MailDataRequired = {
-    to: email.email,
-    from: config.fromAddress,
-    subject: config.subject,
-    text: body.replace("{{unsubscribeId}}", email.unsubscribeId),
-    ipPoolName: "Email Blast",
-    trackingSettings: {
-      clickTracking: {
-        enable: false,
-        enableText: false,
+  const message: AWS.SES.Types.SendEmailRequest = {
+    Destination: {
+      ToAddresses: [email.email],
+    },
+    Message: {
+      Subject: {
+        Data: config.subject,
+        Charset: "UTF-8",
       },
-      openTracking: {
-        enable: false,
-      },
-      subscriptionTracking: {
-        enable: false,
+      Body: {
+        Text: {
+          Charset: "UTF-8",
+          Data: body.replace("{{unsubscribeId}}", email.unsubscribeId),
+        },
       },
     },
+    Source: config.fromAddress,
   };
 
   try {
-    const success = await sendgrid.send(message);
-    const successCode = success[0].statusCode;
-    if (successCode !== 200 && successCode !== 202) {
+    const success = await new AWS.SES({
+      ...awsConfig,
+      signatureVersion: "v4",
+      apiVersion: "2010-12-01",
+    })
+      .sendEmail(message)
+      .promise();
+    if (success.$response.error) {
       return {
         status: "FAILED",
         success: false,
         email: email.email,
-        logText: `API reported status ${successCode}.`,
+        logText: `API reported error ${success.$response.error}.`,
       };
     }
     return {
@@ -69,12 +83,11 @@ export const sendEmail = async (
       logText: `Email successfully sent!`,
     };
   } catch (error) {
-    const err = error as ResponseError;
     return {
       status: "ERROR",
       success: false,
       email: email.email || "",
-      logText: `API reported error ${err.code}: ${err.message}`,
+      logText: `API reported error ${error}`,
     };
   }
 };

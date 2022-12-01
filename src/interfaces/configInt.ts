@@ -1,5 +1,6 @@
 export interface ConfigInt {
-  apiKey: string;
+  accessKeyId: string;
+  secretAccessKey: string;
   fromAddress: string;
   subject: string;
   valid: boolean;

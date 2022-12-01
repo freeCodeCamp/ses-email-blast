@@ -9,12 +9,12 @@ suite("getValid", () => {
     const filePath = path.join(__dirname, "/../validEmails.csv");
     await writeFile(
       filePath,
-      `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnick@freecodecamp.org,2`
+      `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnaomi@freecodecamp.org,2`
     );
     const result = await getValid();
     const expected: EmailInt[] = [
       { email: "nhcarrigan@gmail.com", unsubscribeId: "1" },
-      { email: "nick@freecodecamp.org", unsubscribeId: "2" },
+      { email: "naomi@freecodecamp.org", unsubscribeId: "2" },
     ];
     assert.isArray(result, "did not return an array");
     assert.deepEqual(result, expected, "did not return correct data");
