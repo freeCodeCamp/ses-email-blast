@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/nhcarrigan/SendGrid-Experiment#readme",
   "engines": {
-    "node": "^18.0.0",
-    "npm": "^9.0.0"
+    "node": "18.5.0",
+    "npm": "9.6.2"
   },
   "devDependencies": {
     "@types/chai": "4.3.4",
@@ -44,13 +44,13 @@
     "typescript": "5.0.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.1266.0",
-    "chalk": "^4.1.2",
-    "cli-progress": "^3.9.0",
-    "dotenv": "^16.0.0",
-    "fs-extra": "^11.0.0",
-    "inquirer": "^8.1.2",
-    "spinnies": "^0.5.1"
+    "aws-sdk": "2.1266.0",
+    "chalk": "4.1.2",
+    "cli-progress": "3.9.0",
+    "dotenv": "16.0.0",
+    "fs-extra": "11.0.0",
+    "inquirer": "8.1.2",
+    "spinnies": "0.5.1"
   },
   "lint-staged": {
     "*.ts": [
