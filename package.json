@@ -21,7 +21,7 @@
   "homepage": "https://github.com/nhcarrigan/SendGrid-Experiment#readme",
   "engines": {
     "node": "18.15.0",
-    "npm": "9.6.3"
+    "npm": "9.6.4"
   },
   "devDependencies": {
     "@types/chai": "4.3.4",
