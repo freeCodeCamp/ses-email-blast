@@ -7,7 +7,7 @@
     "build": "tsc",
     "lint": "eslint ./src/",
     "start": "node -r dotenv/config ./prod/index.js",
-    "test": "ts-mocha -u tdd src/tests/**/*.spec.ts --recursive --exit"
+    "test": "ts-mocha -u tdd test/**/*.spec.ts --recursive --exit --timeout 10000"
   },
   "repository": {
     "type": "git",
