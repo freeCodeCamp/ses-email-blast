@@ -1,12 +1,12 @@
 import { assert } from "chai";
-import { getValid } from "../modules/getValid";
+import { getValid } from "../src/modules/getValid";
 import path from "path";
 import { remove, writeFile } from "fs-extra";
-import { EmailInt } from "../interfaces/emailInt";
+import { EmailInt } from "../src/interfaces/emailInt";
 
 suite("getValid", () => {
   test("should return a list of emails", async () => {
-    const filePath = path.join(__dirname, "/../validEmails.csv");
+    const filePath = path.join(__dirname, "/../src/validEmails.csv");
     await writeFile(
       filePath,
       `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnaomi@freecodecamp.org,2`

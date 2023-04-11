@@ -7,7 +7,7 @@
     "build": "tsc",
     "lint": "eslint ./src/",
     "start": "node -r dotenv/config ./prod/index.js",
-    "test": "ts-mocha -u tdd src/tests/**/*.spec.ts --recursive --exit"
+    "test": "ts-mocha -u tdd test/**/*.spec.ts --recursive --exit --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "chai": "4.3.7",
     "eslint": "8.38.0",
     "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-no-only-tests": "3.1.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.3",
     "lint-staged": "13.2.1",
