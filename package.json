@@ -45,7 +45,7 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "aws-sdk": "2.1366.0",
+    "aws-sdk": "2.1367.0",
     "chalk": "4.1.2",
     "cli-progress": "3.12.0",
     "dotenv": "16.0.3",
