@@ -24,7 +24,7 @@
     "npm": "9.6.5"
   },
   "devDependencies": {
-    "@types/chai": "4.3.4",
+    "@types/chai": "4.3.5",
     "@types/cli-progress": "3.11.0",
     "@types/fs-extra": "11.0.1",
     "@types/inquirer": "8.2.6",
