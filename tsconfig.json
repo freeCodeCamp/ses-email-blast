@@ -9,5 +9,5 @@
     "outDir": "./prod",
     "rootDir": "./src"
   },
-  "exclude": ["./deprecated"]
+  "exclude": ["./deprecated", "./test"]
 }

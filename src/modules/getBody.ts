@@ -29,12 +29,7 @@ export const getBody = async (): Promise<string> => {
 
   const filePath = join(__dirname + "/../emailBody.txt");
 
-  const emailBody = await readFile(filePath, "utf8").catch(() => {
-    spinnies.fail("read-body", {
-      color: "red",
-      text: "emailBody.txt not found.",
-    });
-  });
+  const emailBody = await readFile(filePath, "utf8").catch(() => null);
 
   if (!emailBody || !emailBody.length) {
     spinnies.fail("read-body", {
