@@ -1,4 +1,9 @@
-import AWS from "aws-sdk";
+import {
+  SESClient,
+  SESClientConfig,
+  SendEmailCommand,
+  SendEmailRequest,
+} from "@aws-sdk/client-ses";
 import { ConfigInt } from "../interfaces/configInt";
 import { EmailInt } from "../interfaces/emailInt";
 import { sendReportInt } from "../interfaces/sendReportInt";
@@ -31,17 +36,18 @@ export const sendEmail = async (
   /**
    * Set the AWS API key
    */
-  const awsConfig = new AWS.Config({
+  const awsConfig: SESClientConfig = {
     credentials: {
       accessKeyId: config.accessKeyId,
       secretAccessKey: config.secretAccessKey,
     },
     region: "us-east-1",
-  });
+    apiVersion: "2010-12-01",
+  };
   /**
    * Construct SendGrid message object.
    */
-  const message: AWS.SES.Types.SendEmailRequest = {
+  const message: SendEmailRequest = {
     Destination: {
       ToAddresses: [email.email],
     },
@@ -60,20 +66,17 @@ export const sendEmail = async (
     Source: config.fromAddress,
   };
 
+  const client = new SESClient(awsConfig);
+  const command = new SendEmailCommand(message);
+
   try {
-    const success = await new AWS.SES({
-      ...awsConfig,
-      signatureVersion: "v4",
-      apiVersion: "2010-12-01",
-    })
-      .sendEmail(message)
-      .promise();
-    if (success.$response.error) {
+    const success = await client.send(command);
+    if (success.$metadata.httpStatusCode !== 200) {
       return {
         status: "FAILED",
         success: false,
         email: email.email,
-        logText: `API reported error ${success.$response.error}.`,
+        logText: `API reported error ${success.$metadata.httpStatusCode}.`,
       };
     }
     return {
