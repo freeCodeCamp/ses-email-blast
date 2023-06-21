@@ -31,7 +31,7 @@ jobs:
           version: 8
 
       - name: Install Dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Check for eslint-disable
         uses: naomi-lgbt/eslint-disable-action@main
