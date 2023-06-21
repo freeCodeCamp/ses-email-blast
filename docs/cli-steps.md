@@ -55,5 +55,5 @@ In the event that you have failed emails when the script is finished running, yo
 
 ```bash
 cp ./prod/failedEmails.csv ./prod/validEmails.csv
-npm run start
+pnpm run start
 ```
