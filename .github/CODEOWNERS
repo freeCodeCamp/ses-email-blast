@@ -1,4 +1,21 @@
+# -------------------------------------------------
+# All files are owned by dev team
+# -------------------------------------------------
+
 * @freecodecamp/dev-team
 
+# --- Owned by none (negate rule above) ---
+
+package.json
+pnpm-lock.yaml
+
+# -------------------------------------------------
+# All files in the root are owned by dev team
+# -------------------------------------------------
+
+/* @freecodecamp/dev-team
+
+# --- Owned by none (negate rule above) ---
+
 /package.json
-/package-lock.json
+/pnpm-lock.yaml
