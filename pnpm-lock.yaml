@@ -32,8 +32,8 @@ devDependencies:
     specifier: 4.3.6
     version: 4.3.6
   '@types/cli-progress':
-    specifier: 3.11.2
-    version: 3.11.2
+    specifier: 3.11.3
+    version: 3.11.3
   '@types/fs-extra':
     specifier: 11.0.2
     version: 11.0.2
@@ -1000,8 +1000,8 @@ packages:
     resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
     dev: true
 
-  /@types/cli-progress@3.11.2:
-    resolution: {integrity: sha512-Yt/8rEJalfa9ve2SbfQnwFHrc9QF52JIZYHW3FDaTMpkCvnns26ueKiPHDxyJ0CS//IqjMINTx7R5Xa7k7uFHQ==}
+  /@types/cli-progress@3.11.3:
+    resolution: {integrity: sha512-/+C9xAdVtc+g5yHHkGBThgAA8rYpi5B+2ve3wLtybYj0JHEBs57ivR4x/zGfSsplRnV+psE91Nfin1soNKqz5Q==}
     dependencies:
       '@types/node': 18.16.19
     dev: true
