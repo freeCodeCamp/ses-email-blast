@@ -38,8 +38,8 @@ devDependencies:
     specifier: 11.0.3
     version: 11.0.3
   '@types/inquirer':
-    specifier: 8.2.8
-    version: 8.2.8
+    specifier: 8.2.9
+    version: 8.2.9
   '@types/mocha':
     specifier: 10.0.3
     version: 10.0.3
@@ -1013,8 +1013,8 @@ packages:
       '@types/node': 18.16.19
     dev: true
 
-  /@types/inquirer@8.2.8:
-    resolution: {integrity: sha512-q41JJZchAdegBXxSserfQKGJDbY9BRFAP2gCHh741DMuQZT90YW3/eE9BxO0HMtWpGjm/JatBdrkdbKaPZRSYw==}
+  /@types/inquirer@8.2.9:
+    resolution: {integrity: sha512-5IEO2PwCy4NZDgj977dho4Qbdiw6dJZJzD4ZaB/9j7dfppf7z0xxFPKZz/FtTAUQbDjmWHJ6Jlz/gn0YzWHPsw==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.1
