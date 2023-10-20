@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@nhcarrigan/eslint-config": "3.2.0",
+    "@nhcarrigan/prettier-config": "3.2.0",
     "@types/chai": "4.3.9",
     "@types/cli-progress": "3.11.4",
     "@types/fs-extra": "11.0.3",
