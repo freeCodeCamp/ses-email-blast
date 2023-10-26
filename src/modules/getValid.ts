@@ -11,9 +11,9 @@ const spinnies = new Spinnies({
       "▰▰▰▰▰▱▱",
       "▰▰▰▰▰▰▱",
       "▰▰▰▰▰▰▰",
-      "▰▱▱▱▱▱▱",
-    ],
-  },
+      "▰▱▱▱▱▱▱"
+    ]
+  }
 });
 import { join } from "path";
 import { EmailInt } from "../interfaces/emailInt";
@@ -27,7 +27,7 @@ import { EmailInt } from "../interfaces/emailInt";
 export const getValid = async (): Promise<EmailInt[]> => {
   spinnies.add("read-valid", {
     color: "cyan",
-    text: "Reading valid email list...",
+    text: "Reading valid email list..."
   });
 
   const filePath = join(__dirname + "/../validEmails.csv");
@@ -37,7 +37,7 @@ export const getValid = async (): Promise<EmailInt[]> => {
   if (!validListString || !validListString.length) {
     spinnies.fail("read-valid", {
       color: "red",
-      text: "Failed to read valid email list. Exiting process...",
+      text: "Failed to read valid email list. Exiting process..."
     });
     return [];
   }
@@ -52,12 +52,23 @@ export const getValid = async (): Promise<EmailInt[]> => {
     // Map into proper objects
     .map((line) => {
       const [email, unsubscribeId] = line.split(",");
+      if (!email || !unsubscribeId) {
+        /**
+         * Just in case, we return empty strings when the split doesn't generate
+         * the expected data.
+         */
+        return { email: "", unsubscribeId: "" };
+      }
       return { email, unsubscribeId };
-    });
+    })
+    /**
+     * Filter out the empty strings just to be safe.
+     */
+    .filter((el) => el.email && el.unsubscribeId);
 
   spinnies.succeed("read-valid", {
     color: "green",
-    text: "Email list obtained!",
+    text: "Email list obtained!"
   });
   return validList;
 };

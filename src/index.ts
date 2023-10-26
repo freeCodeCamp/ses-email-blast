@@ -57,8 +57,8 @@ dotenv.config();
       message: chalk.cyan(
         `Proceed with sending to ${chalk.yellow(emailTotal)} addresses?`
       ),
-      type: "confirm",
-    },
+      type: "confirm"
+    }
   ]);
 
   if (!shouldProceed.continue) {
@@ -99,6 +99,13 @@ dotenv.config();
   for (let i = 0; i < emailTotal; i++) {
     totalBar.increment();
     const targetEmail = validList[i];
+    /**
+     * This should never be possible, as the loop is bounded to the length of the validList array.
+     * However, we add this condition to please TypeScript.
+     */
+    if (!targetEmail) {
+      continue;
+    }
     const status = await sendEmail(configuration, targetEmail, body);
     if (!status.success) {
       failedBar.increment();
