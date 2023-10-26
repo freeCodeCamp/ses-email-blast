@@ -1,13 +1,8 @@
 {
+  "extends": "@nhcarrigan/typescript-config",
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./prod",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "outDir": "./prod"
   },
-  "exclude": ["./deprecated", "./test"]
+  "exclude": ["./test"]
 }

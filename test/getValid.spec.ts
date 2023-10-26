@@ -1,8 +1,10 @@
-import { assert } from "chai";
-import { getValid } from "../src/modules/getValid";
 import path from "path";
+
+import { assert } from "chai";
 import { remove, writeFile } from "fs-extra";
+
 import { EmailInt } from "../src/interfaces/emailInt";
+import { getValid } from "../src/modules/getValid";
 
 suite("getValid", () => {
   test("should return a list of emails", async () => {
@@ -14,7 +16,7 @@ suite("getValid", () => {
     const result = await getValid();
     const expected: EmailInt[] = [
       { email: "nhcarrigan@gmail.com", unsubscribeId: "1" },
-      { email: "naomi@freecodecamp.org", unsubscribeId: "2" },
+      { email: "naomi@freecodecamp.org", unsubscribeId: "2" }
     ];
     assert.isArray(result, "did not return an array");
     assert.deepEqual(result, expected, "did not return correct data");

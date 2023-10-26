@@ -1,6 +1,13 @@
 import chalk from "chalk";
 import { Options, Params } from "cli-progress";
 
+/**
+ * Generates progress bars for the terminal.
+ *
+ * @param {Options} options The progress bar option object.
+ * @param {Params} params The progress bar parameters object.
+ * @returns {string} The formatted progress bar.
+ */
 export const barFormatter = (
   options: Options,
   params: Params,
