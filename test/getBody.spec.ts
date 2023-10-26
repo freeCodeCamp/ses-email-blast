@@ -1,9 +1,11 @@
-import { assert } from "chai";
-import { getBody } from "../src/modules/getBody";
 import path from "path";
+
+import { assert } from "chai";
 import { remove, writeFile } from "fs-extra";
 
-suite("Get Body", async () => {
+import { getBody } from "../src/modules/getBody";
+
+suite("Get Body", () => {
   test("should read the email body from file", async () => {
     const filepath = path.join(__dirname + "/../src/emailBody.txt");
     await writeFile(filepath, "This is a test");

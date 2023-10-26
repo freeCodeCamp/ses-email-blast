@@ -1,5 +1,10 @@
+import { join } from "path";
+
 import { readFile } from "fs-extra";
 import Spinnies from "spinnies";
+
+import { EmailInt } from "../interfaces/emailInt";
+
 const spinnies = new Spinnies({
   spinner: {
     interval: 80,
@@ -15,12 +20,11 @@ const spinnies = new Spinnies({
     ]
   }
 });
-import { join } from "path";
-import { EmailInt } from "../interfaces/emailInt";
 
 /**
  * Gets the valid list of email addresses from the validEmails.csv file,
  * and maps them to an array of EmailInt objects.
+ *
  * @returns {Promise<EmailInt[]>} The list of valid emails, formatted as
  * proper objects.
  */

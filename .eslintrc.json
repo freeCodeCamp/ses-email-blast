@@ -1,3 +1,7 @@
 {
-  "extends": "@nhcarrigan"
+  "extends": "@nhcarrigan",
+  "rules": {
+    // Because this is a CLI tool, we ignore this.
+    "no-console": "off"
+  }
 }

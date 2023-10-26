@@ -1,15 +1,18 @@
+import { join } from "path";
+
 import chalk from "chalk";
 import { MultiBar, Presets } from "cli-progress";
 import dotenv from "dotenv";
 import { createWriteStream } from "fs-extra";
 import { prompt } from "inquirer";
-import { join } from "path";
+
 import { emailTest } from "./modules/emailTest";
 import { getBody } from "./modules/getBody";
 import { getEnv } from "./modules/getEnv";
 import { getValid } from "./modules/getValid";
 import { sendEmail } from "./modules/sendEmail";
 import { barFormatter } from "./tools/barFormatter";
+
 dotenv.config();
 
 // Anonymous function for IIFE to allow async
@@ -24,7 +27,7 @@ dotenv.config();
   }
 
   /**
-   * Get the body of the email
+   * Get the body of the email.
    */
   const body = await getBody();
 
@@ -76,7 +79,7 @@ dotenv.config();
   failureStream.write("email,unsubscribeId\n");
 
   /**
-   * Begin a write stream to log all API calls
+   * Begin a write stream to log all API calls.
    */
   const logPath = join(__dirname + "/emailLog.txt");
   const logStream = createWriteStream(logPath);
