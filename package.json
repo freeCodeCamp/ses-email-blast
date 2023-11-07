@@ -28,7 +28,7 @@
     "@nhcarrigan/prettier-config": "3.2.0",
     "@nhcarrigan/typescript-config": "3.0.0",
     "@types/chai": "4.3.9",
-    "@types/cli-progress": "3.11.4",
+    "@types/cli-progress": "3.11.5",
     "@types/fs-extra": "11.0.3",
     "@types/inquirer": "8.2.9",
     "@types/mocha": "10.0.3",
