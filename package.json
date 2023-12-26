@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/nhcarrigan/SendGrid-Experiment#readme",
   "engines": {
-    "node": "18.17.0",
+    "node": "18.19.0",
     "npm": "9.9.2"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/inquirer": "8.2.10",
     "@types/mocha": "10.0.6",
-    "@types/node": "18.16.19",
+    "@types/node": "18.19.3",
     "chai": "4.3.10",
     "eslint": "8.56.0",
     "husky": "8.0.3",
