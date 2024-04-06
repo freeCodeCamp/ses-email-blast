@@ -1,9 +1,9 @@
 import {
-  SESClient,
-  SESClientConfig,
+  SESv2Client,
+  SESv2ClientConfig,
   SendEmailCommand,
   SendEmailRequest
-} from "@aws-sdk/client-ses";
+} from "@aws-sdk/client-sesv2";
 
 import { ConfigInt } from "../interfaces/configInt";
 import { EmailInt } from "../interfaces/emailInt";
@@ -38,7 +38,7 @@ export const sendEmail = async (
   /**
    * Set the AWS API key.
    */
-  const awsConfig: SESClientConfig = {
+  const awsConfig: SESv2ClientConfig = {
     credentials: {
       accessKeyId: config.accessKeyId,
       secretAccessKey: config.secretAccessKey
@@ -53,22 +53,34 @@ export const sendEmail = async (
     Destination: {
       ToAddresses: [email.email]
     },
-    Message: {
-      Subject: {
-        Data: config.subject,
-        Charset: "UTF-8"
-      },
-      Body: {
-        Text: {
-          Charset: "UTF-8",
-          Data: body.replace("{{unsubscribeId}}", email.unsubscribeId)
-        }
+    Content: {
+      Simple: {
+        Subject: {
+          Data: config.subject,
+          Charset: "UTF-8"
+        },
+        Body: {
+          Text: {
+            Charset: "UTF-8",
+            Data: body.replace("{{unsubscribeId}}", email.unsubscribeId)
+          }
+        },
+        Headers: [
+          {
+            Name: "List-Unsubscribe-Post",
+            Value: "List-Unsubscribe=One-Click"
+          },
+          {
+            Name: "List-Unsubscribe",
+            Value: `<https://www.freecodecamp.org/ue/${email.unsubscribeId}>`
+          }
+        ]
       }
     },
-    Source: config.fromAddress
+    FromEmailAddress: config.fromAddress
   };
 
-  const client = new SESClient(awsConfig);
+  const client = new SESv2Client(awsConfig);
   const command = new SendEmailCommand(message);
 
   try {
