@@ -50,8 +50,8 @@ devDependencies:
     specifier: 8.2.10
     version: 8.2.10
   '@types/mocha':
-    specifier: 10.0.6
-    version: 10.0.6
+    specifier: 10.0.7
+    version: 10.0.7
   '@types/node':
     specifier: 18.19.17
     version: 18.19.17
@@ -68,14 +68,14 @@ devDependencies:
     specifier: 13.3.0
     version: 13.3.0
   mocha:
-    specifier: 10.3.0
-    version: 10.3.0
+    specifier: 10.5.2
+    version: 10.5.2
   prettier:
     specifier: 3.2.5
     version: 3.2.5
   ts-mocha:
     specifier: 10.0.0
-    version: 10.0.0(mocha@10.3.0)
+    version: 10.0.0(mocha@10.5.2)
   typescript:
     specifier: 5.3.3
     version: 5.3.3
@@ -1137,8 +1137,8 @@ packages:
       '@types/node': 18.19.17
     dev: true
 
-  /@types/mocha@10.0.6:
-    resolution: {integrity: sha512-dJvrYWxP/UcXm36Qn36fxhUKu8A/xMRXVT2cliFF1Z7UA9liG5Psj3ezNSZw+5puH2czDXRLcXQxf8JbJt0ejg==}
+  /@types/mocha@10.0.7:
+    resolution: {integrity: sha512-GN8yJ1mNTcFcah/wKEFIJckJx9iJLoMSzWcfRRuxz/Jk+U6KQNnml+etbtxFK8lPjzOw3zp4Ha/kjSst9fsHYw==}
     dev: true
 
   /@types/node@18.19.17:
@@ -2406,6 +2406,7 @@ packages:
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -2418,6 +2419,7 @@ packages:
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -2559,6 +2561,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -2974,8 +2977,8 @@ packages:
       minimist: 1.2.8
     dev: true
 
-  /mocha@10.3.0:
-    resolution: {integrity: sha512-uF2XJs+7xSLsrmIvn37i/wnc91nw7XjOQB8ccyx5aEgdnohr7n+rEiZP23WkCYHjilR6+EboEnbq/ZQDz4LSbg==}
+  /mocha@10.5.2:
+    resolution: {integrity: sha512-9btlN3JKCefPf+vKd/kcKz2SXxi12z6JswkGfaAF0saQvnsqLJk504ZmbxhSoENge08E9dsymozKgFMTl5PQsA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -3640,14 +3643,14 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /ts-mocha@10.0.0(mocha@10.3.0):
+  /ts-mocha@10.0.0(mocha@10.5.2):
     resolution: {integrity: sha512-VRfgDO+iiuJFlNB18tzOfypJ21xn2xbuZyDvJvqpTbWgkAgD17ONGr8t+Tl8rcBtOBdjXp5e/Rk+d39f7XBHRw==}
     engines: {node: '>= 6.X.X'}
     hasBin: true
     peerDependencies:
       mocha: ^3.X.X || ^4.X.X || ^5.X.X || ^6.X.X || ^7.X.X || ^8.X.X || ^9.X.X || ^10.X.X
     dependencies:
-      mocha: 10.3.0
+      mocha: 10.5.2
       ts-node: 7.0.1
     optionalDependencies:
       tsconfig-paths: 3.14.2
