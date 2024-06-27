@@ -4,7 +4,7 @@ import { join } from "path";
 import chalk from "chalk";
 import { MultiBar, Presets } from "cli-progress";
 import dotenv from "dotenv";
-import { prompt } from "inquirer";
+import inquirer from "inquirer";
 
 import { emailTest } from "./modules/emailTest";
 import { getBody } from "./modules/getBody";
@@ -54,7 +54,7 @@ dotenv.config();
     return;
   }
 
-  const shouldProceed = await prompt([
+  const shouldProceed = await inquirer.prompt([
     {
       name: "continue",
       message: chalk.cyan(
