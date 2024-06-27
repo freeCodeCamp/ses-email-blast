@@ -30,7 +30,7 @@ export const getBody = async (): Promise<string> => {
     text: "Reading email body..."
   });
 
-  const filePath = join(__dirname + "/../emailBody.txt");
+  const filePath = join(process.cwd(), "prod", "/emailBody.txt");
 
   const emailBody = await readFile(filePath, "utf8").catch(() => null);
 

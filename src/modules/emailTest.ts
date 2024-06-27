@@ -2,10 +2,10 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import Spinnies from "spinnies";
 
-import { ConfigInt } from "../interfaces/configInt";
-import { EmailInt } from "../interfaces/emailInt";
+import { ConfigInt } from "../interfaces/configInt.js";
+import { EmailInt } from "../interfaces/emailInt.js";
 
-import { sendEmail } from "./sendEmail";
+import { sendEmail } from "./sendEmail.js";
 
 const spinnies = new Spinnies({
   spinner: {

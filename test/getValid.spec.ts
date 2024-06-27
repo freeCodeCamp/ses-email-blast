@@ -3,12 +3,12 @@ import path from "path";
 
 import { assert, describe, test } from "vitest";
 
-import { EmailInt } from "../src/interfaces/emailInt";
-import { getValid } from "../src/modules/getValid";
+import { EmailInt } from "../src/interfaces/emailInt.js";
+import { getValid } from "../src/modules/getValid.js";
 
 describe("getValid", () => {
   test("should return a list of emails", async () => {
-    const filePath = path.join(__dirname, "/../src/validEmails.csv");
+    const filePath = path.join(process.cwd(), "prod", "validEmails.csv");
     await writeFile(
       filePath,
       `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnaomi@freecodecamp.org,2`

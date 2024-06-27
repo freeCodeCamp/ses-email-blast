@@ -2,7 +2,7 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import Spinnies from "spinnies";
 
-import { ConfigInt } from "../interfaces/configInt";
+import { ConfigInt } from "../interfaces/configInt.js";
 
 const spinnies = new Spinnies({
   spinner: {
