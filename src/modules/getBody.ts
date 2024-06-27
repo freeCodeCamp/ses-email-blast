@@ -1,6 +1,6 @@
+import { readFile } from "fs/promises";
 import { join } from "path";
 
-import { readFile } from "fs-extra";
 import Spinnies from "spinnies";
 
 const spinnies = new Spinnies({

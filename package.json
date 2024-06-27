@@ -2,12 +2,11 @@
   "name": "ses-email-blast",
   "version": "1.0.0",
   "description": "CLI tool for sending emails through Amazon SES.",
-  "main": "./prod/main.js",
   "scripts": {
     "build": "tsc",
     "lint": "eslint ./src/",
     "start": "node -r dotenv/config ./prod/index.js",
-    "test": "ts-mocha -u tdd test/**/*.spec.ts --recursive --exit --timeout 10000"
+    "test": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -20,34 +19,29 @@
   },
   "homepage": "https://github.com/nhcarrigan/SendGrid-Experiment#readme",
   "engines": {
-    "node": "18.19.1",
-    "npm": "9.9.2"
+    "node": "20",
+    "pnpm": "9"
   },
   "devDependencies": {
     "@nhcarrigan/eslint-config": "3.2.0",
     "@nhcarrigan/prettier-config": "3.2.0",
     "@nhcarrigan/typescript-config": "3.0.0",
-    "@types/chai": "4.3.11",
     "@types/cli-progress": "3.11.5",
-    "@types/fs-extra": "11.0.4",
     "@types/inquirer": "8.2.10",
-    "@types/mocha": "10.0.6",
-    "@types/node": "18.19.17",
-    "chai": "4.4.1",
+    "@types/node": "20.14.9",
+    "@vitest/coverage-istanbul": "1.6.0",
     "eslint": "8.56.0",
     "husky": "8.0.3",
     "lint-staged": "13.3.0",
-    "mocha": "10.3.0",
     "prettier": "3.2.5",
-    "ts-mocha": "10.0.0",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "vitest": "1.6.0"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "3.515.0",
     "chalk": "4.1.2",
     "cli-progress": "3.12.0",
     "dotenv": "16.4.5",
-    "fs-extra": "11.2.0",
     "inquirer": "8.2.6",
     "spinnies": "0.5.1"
   },

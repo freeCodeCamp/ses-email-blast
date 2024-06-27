@@ -1,9 +1,9 @@
+import { createWriteStream } from "fs";
 import { join } from "path";
 
 import chalk from "chalk";
 import { MultiBar, Presets } from "cli-progress";
 import dotenv from "dotenv";
-import { createWriteStream } from "fs-extra";
 import { prompt } from "inquirer";
 
 import { emailTest } from "./modules/emailTest";
