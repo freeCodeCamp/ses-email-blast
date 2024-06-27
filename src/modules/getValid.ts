@@ -1,9 +1,9 @@
+import { readFile } from "fs/promises";
 import { join } from "path";
 
-import { readFile } from "fs-extra";
 import Spinnies from "spinnies";
 
-import { EmailInt } from "../interfaces/emailInt";
+import { EmailInt } from "../interfaces/emailInt.js";
 
 const spinnies = new Spinnies({
   spinner: {
@@ -34,7 +34,7 @@ export const getValid = async (): Promise<EmailInt[]> => {
     text: "Reading valid email list..."
   });
 
-  const filePath = join(__dirname + "/../validEmails.csv");
+  const filePath = join(process.cwd(), "prod", "/validEmails.csv");
 
   const validListString = await readFile(filePath, "utf8").catch(() => null);
 

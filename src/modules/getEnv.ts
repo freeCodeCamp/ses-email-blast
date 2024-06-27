@@ -1,8 +1,8 @@
 import chalk from "chalk";
-import { prompt } from "inquirer";
+import inquirer from "inquirer";
 import Spinnies from "spinnies";
 
-import { ConfigInt } from "../interfaces/configInt";
+import { ConfigInt } from "../interfaces/configInt.js";
 
 const spinnies = new Spinnies({
   spinner: {
@@ -83,7 +83,7 @@ export const getEnv = async (): Promise<ConfigInt> => {
   /**
    * Prompts the user for manual confirmation of email and subject fields.
    */
-  const validateEnv = await prompt([
+  const validateEnv = await inquirer.prompt([
     {
       type: "confirm",
       message: chalk.cyan(

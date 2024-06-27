@@ -1,11 +1,11 @@
 import chalk from "chalk";
-import { prompt } from "inquirer";
+import inquirer from "inquirer";
 import Spinnies from "spinnies";
 
-import { ConfigInt } from "../interfaces/configInt";
-import { EmailInt } from "../interfaces/emailInt";
+import { ConfigInt } from "../interfaces/configInt.js";
+import { EmailInt } from "../interfaces/emailInt.js";
 
-import { sendEmail } from "./sendEmail";
+import { sendEmail } from "./sendEmail.js";
 
 const spinnies = new Spinnies({
   spinner: {
@@ -36,7 +36,7 @@ export const emailTest = async (
   config: ConfigInt,
   body: string
 ): Promise<boolean> => {
-  const shouldTest = await prompt([
+  const shouldTest = await inquirer.prompt([
     {
       name: "should_test",
       type: "confirm",
@@ -52,7 +52,7 @@ export const emailTest = async (
     return true;
   }
 
-  const testAddress = await prompt([
+  const testAddress = await inquirer.prompt([
     {
       name: "test_address",
       type: "input",
@@ -85,7 +85,7 @@ export const emailTest = async (
     text: `Email sent! Please check your ${testEmailObject.email} inbox.`
   });
 
-  const didRecieve = await prompt([
+  const didRecieve = await inquirer.prompt([
     {
       name: "got_email",
       type: "confirm",

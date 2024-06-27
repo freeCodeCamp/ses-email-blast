@@ -1,17 +1,17 @@
+import { createWriteStream } from "fs";
 import { join } from "path";
 
 import chalk from "chalk";
 import { MultiBar, Presets } from "cli-progress";
 import dotenv from "dotenv";
-import { createWriteStream } from "fs-extra";
-import { prompt } from "inquirer";
+import inquirer from "inquirer";
 
-import { emailTest } from "./modules/emailTest";
-import { getBody } from "./modules/getBody";
-import { getEnv } from "./modules/getEnv";
-import { getValid } from "./modules/getValid";
-import { sendEmail } from "./modules/sendEmail";
-import { barFormatter } from "./tools/barFormatter";
+import { emailTest } from "./modules/emailTest.js";
+import { getBody } from "./modules/getBody.js";
+import { getEnv } from "./modules/getEnv.js";
+import { getValid } from "./modules/getValid.js";
+import { sendEmail } from "./modules/sendEmail.js";
+import { barFormatter } from "./tools/barFormatter.js";
 
 dotenv.config();
 
@@ -54,7 +54,7 @@ dotenv.config();
     return;
   }
 
-  const shouldProceed = await prompt([
+  const shouldProceed = await inquirer.prompt([
     {
       name: "continue",
       message: chalk.cyan(
@@ -74,14 +74,14 @@ dotenv.config();
   /**
    * Begin a write stream to create a CSV for failed emails.
    */
-  const failedPath = join(__dirname + "/failedEmails.csv");
+  const failedPath = join(process.cwd(), "prod", "failedEmails.csv");
   const failureStream = createWriteStream(failedPath);
   failureStream.write("email,unsubscribeId\n");
 
   /**
    * Begin a write stream to log all API calls.
    */
-  const logPath = join(__dirname + "/emailLog.txt");
+  const logPath = join(process.cwd(), "prod", "/emailLog.txt");
   const logStream = createWriteStream(logPath);
   logStream.write("Status - Email - Message\n");
 

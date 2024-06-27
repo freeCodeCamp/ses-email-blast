@@ -4,5 +4,5 @@
     "rootDir": "./src",
     "outDir": "./prod"
   },
-  "exclude": ["./test"]
+  "exclude": ["./test", "vitest.config.ts"]
 }

@@ -5,9 +5,9 @@ import {
   SendEmailRequest
 } from "@aws-sdk/client-ses";
 
-import { ConfigInt } from "../interfaces/configInt";
-import { EmailInt } from "../interfaces/emailInt";
-import { sendReportInt } from "../interfaces/sendReportInt";
+import { ConfigInt } from "../interfaces/configInt.js";
+import { EmailInt } from "../interfaces/emailInt.js";
+import { sendReportInt } from "../interfaces/sendReportInt.js";
 
 /**
  * Sends an email with the passed configuration and body to the passed email address.

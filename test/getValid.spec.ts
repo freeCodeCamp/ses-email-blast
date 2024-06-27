@@ -1,14 +1,14 @@
+import { unlink, writeFile } from "fs/promises";
 import path from "path";
 
-import { assert } from "chai";
-import { remove, writeFile } from "fs-extra";
+import { assert, describe, test } from "vitest";
 
-import { EmailInt } from "../src/interfaces/emailInt";
-import { getValid } from "../src/modules/getValid";
+import { EmailInt } from "../src/interfaces/emailInt.js";
+import { getValid } from "../src/modules/getValid.js";
 
-suite("getValid", () => {
+describe("getValid", () => {
   test("should return a list of emails", async () => {
-    const filePath = path.join(__dirname, "/../src/validEmails.csv");
+    const filePath = path.join(process.cwd(), "prod", "validEmails.csv");
     await writeFile(
       filePath,
       `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnaomi@freecodecamp.org,2`
@@ -30,7 +30,7 @@ suite("getValid", () => {
       expected[1],
       "did not return correct data for second entry"
     );
-    await remove(filePath);
+    await unlink(filePath);
   });
 
   test("should return empty array on missing file", async () => {
