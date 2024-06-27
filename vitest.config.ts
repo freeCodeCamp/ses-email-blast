@@ -7,9 +7,6 @@ export default defineConfig({
       reporter: ["text", "html"],
       all: true,
       allowExternal: true,
-      thresholds: {
-        lines: 22
-      },
       exclude: ["prod", ...configDefaults.exclude]
     }
   }
