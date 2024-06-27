@@ -1,5 +1,5 @@
 {
   "extends": [
-    "github>naomi-lgbt/renovate-config"
+    "github>freeCodeCamp/renovate-config"
   ]
 }
