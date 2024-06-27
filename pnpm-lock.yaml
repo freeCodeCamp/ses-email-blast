@@ -38,8 +38,8 @@ devDependencies:
     specifier: 3.0.0
     version: 3.0.0(typescript@5.3.3)
   '@types/chai':
-    specifier: 4.3.11
-    version: 4.3.11
+    specifier: 4.3.16
+    version: 4.3.16
   '@types/cli-progress':
     specifier: 3.11.5
     version: 3.11.5
@@ -1098,8 +1098,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@types/chai@4.3.11:
-    resolution: {integrity: sha512-qQR1dr2rGIHYlJulmr8Ioq3De0Le9E4MJ5AiaeAETJJpndT1uUNHsGFK3L/UIu+rbkQSdj8J/w2bCsBZc/Y5fQ==}
+  /@types/chai@4.3.16:
+    resolution: {integrity: sha512-PatH4iOdyh3MyWtmHVFXLWCCIhUbopaltqddG9BzB+gMIzee2MJrvd+jouii9Z3wzQJruGWAm7WOMjgfG8hQlQ==}
     dev: true
 
   /@types/cli-progress@3.11.5:
