@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint ./src/",
-    "start": "op run --env-file='./prod.env' -- node prod/index.js",
+    "start": "op run --no-masking --env-file='./prod.env' -- node prod/index.js",
     "test": "vitest run --coverage"
   },
   "repository": {
