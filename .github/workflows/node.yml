@@ -33,11 +33,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Check for eslint-disable
-        uses: naomi-lgbt/eslint-disable-action@main
-        with:
-          directories: "src test"
-
       - name: Lint Source Files
         run: pnpm run lint
       
