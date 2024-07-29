@@ -29,7 +29,7 @@
     "@nhcarrigan/typescript-config": "4.0.0",
     "@types/cli-progress": "3.11.6",
     "@types/inquirer": "9.0.7",
-    "@types/node": "20.14.10",
+    "@types/node": "20.14.13",
     "@vitest/coverage-istanbul": "1.6.0",
     "eslint": "8.57.0",
     "pre-commit": "1.2.2",
