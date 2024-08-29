@@ -43,7 +43,7 @@ export const sendEmail = async (
       accessKeyId: config.accessKeyId,
       secretAccessKey: config.secretAccessKey
     },
-    region: "us-east-1",
+    region: "us-east-2",
     apiVersion: "2010-12-01"
   };
   /**
