@@ -29,10 +29,10 @@ importers:
     devDependencies:
       '@nhcarrigan/eslint-config':
         specifier: 3.3.3
-        version: 3.3.3(eslint@8.57.1)(prettier@3.3.3)(typescript@5.7.2)
+        version: 3.3.3(eslint@8.57.1)(prettier@3.4.0)(typescript@5.7.2)
       '@nhcarrigan/prettier-config':
         specifier: 3.2.0
-        version: 3.2.0(prettier@3.3.3)
+        version: 3.2.0(prettier@3.4.0)
       '@nhcarrigan/typescript-config':
         specifier: 4.0.0
         version: 4.0.0(typescript@5.7.2)
@@ -55,8 +55,8 @@ importers:
         specifier: 1.2.2
         version: 1.2.2
       prettier:
-        specifier: 3.3.3
-        version: 3.3.3
+        specifier: 3.4.0
+        version: 3.4.0
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -1887,8 +1887,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.4.0:
+    resolution: {integrity: sha512-/OXNZcLyWkfo13ofOW5M7SLh+k5pnIs07owXK2teFpnfaOEcycnSy7HQxldaVX1ZP/7Q8oO1eDuQJNwbomQq5Q==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3001,7 +3001,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@nhcarrigan/eslint-config@3.3.3(eslint@8.57.1)(prettier@3.3.3)(typescript@5.7.2)':
+  '@nhcarrigan/eslint-config@3.3.3(eslint@8.57.1)(prettier@3.4.0)(typescript@5.7.2)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.7.2)
@@ -3011,7 +3011,7 @@ snapshots:
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)
       eslint-plugin-jsdoc: 41.1.2(eslint@8.57.1)
       eslint-plugin-no-only-tests: 3.1.0
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.0)
     transitivePeerDependencies:
       - '@types/eslint'
       - eslint-import-resolver-typescript
@@ -3020,9 +3020,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@nhcarrigan/prettier-config@3.2.0(prettier@3.3.3)':
+  '@nhcarrigan/prettier-config@3.2.0(prettier@3.4.0)':
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.4.0
 
   '@nhcarrigan/typescript-config@4.0.0(typescript@5.7.2)':
     dependencies:
@@ -4001,10 +4001,10 @@ snapshots:
 
   eslint-plugin-no-only-tests@3.1.0: {}
 
-  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3):
+  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.0):
     dependencies:
       eslint: 8.57.1
-      prettier: 3.3.3
+      prettier: 3.4.0
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     optionalDependencies:
@@ -4664,7 +4664,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.3.3: {}
+  prettier@3.4.0: {}
 
   pretty-format@29.7.0:
     dependencies:
