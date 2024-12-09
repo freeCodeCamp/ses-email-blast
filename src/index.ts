@@ -15,9 +15,22 @@ import { barFormatter } from "./tools/barFormatter.js";
 
 dotenv.config();
 
+const isInScreenEnvironment = () => {
+  return (
+    process.env.STY !== undefined ||
+    process.env.SCREEN !== undefined ||
+    (process.env.TERM !== undefined && process.env.TERMCAP)
+  );
+};
+
 // Anonymous function for IIFE to allow async
 (async function () {
   console.info(chalk.green(`Hello! Launching email blast application.`));
+  if (!isInScreenEnvironment()) {
+    throw new Error(
+      "You must run this script in a screen session to persist the process after closing the SSH connection."
+    );
+  }
   /**
    * Begin by confirming the environment variables.
    */
