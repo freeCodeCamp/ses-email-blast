@@ -1,11 +1,16 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
+/**
+ * @copyright nhcarrigan
+ * @license Naomi's Public License
+ * @author Naomi Carrigan
+ */
 
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+// eslint-disable-next-line @typescript-eslint/naming-convention
 import Spinnies from "spinnies";
 
 const spinnies = new Spinnies({
   spinner: {
-    interval: 80,
     frames: [
       "▰▱▱▱▱▱▱",
       "▰▰▱▱▱▱▱",
@@ -14,30 +19,32 @@ const spinnies = new Spinnies({
       "▰▰▰▰▰▱▱",
       "▰▰▰▰▰▰▱",
       "▰▰▰▰▰▰▰",
-      "▰▱▱▱▱▱▱"
-    ]
-  }
+      "▰▱▱▱▱▱▱",
+    ],
+    interval: 80,
+  },
 });
 
 /**
  * Reads the emailBody.txt file and returns it, or an empty string on error.
- *
- * @returns {Promise<string>} The email body text from emailBody.txt.
+ * @returns The email body text from emailBody.txt.
  */
-export const getBody = async (): Promise<string> => {
+export const getBody = async(): Promise<string> => {
   spinnies.add("read-body", {
     color: "cyan",
-    text: "Reading email body..."
+    text:  "Reading email body...",
   });
 
   const filePath = join(process.cwd(), "prod", "/emailBody.txt");
 
-  const emailBody = await readFile(filePath, "utf8").catch(() => null);
+  const emailBody = await readFile(filePath, "utf8").catch(() => {
+    return null;
+  });
 
-  if (!emailBody || !emailBody.length) {
+  if (emailBody === null || emailBody.length === 0) {
     spinnies.fail("read-body", {
       color: "red",
-      text: "Could not read email body. Terminating process..."
+      text:  "Could not read email body. Terminating process...",
     });
 
     return "";
@@ -45,7 +52,7 @@ export const getBody = async (): Promise<string> => {
 
   spinnies.succeed("read-body", {
     color: "green",
-    text: "Email body obtained!"
+    text:  "Email body obtained!",
   });
 
   return emailBody;

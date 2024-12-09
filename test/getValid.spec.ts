@@ -1,41 +1,43 @@
-import { unlink, writeFile } from "fs/promises";
-import path from "path";
+/**
+ * @copyright nhcarrigan
+ * @license Naomi's Public License
+ * @author Naomi Carrigan
+ */
 
-import { assert, describe, test } from "vitest";
-
-import { EmailInt } from "../src/interfaces/emailInt.js";
+import { unlink, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { expect, describe, it } from "vitest";
 import { getValid } from "../src/modules/getValid.js";
+import type { EmailInt } from "../src/interfaces/emailInt.js";
 
 describe("getValid", () => {
-  test("should return a list of emails", async () => {
+  it("should return a list of emails", async() => {
+    expect.assertions(4);
     const filePath = path.join(process.cwd(), "prod", "validEmails.csv");
     await writeFile(
       filePath,
-      `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnaomi@freecodecamp.org,2`
+      `email,unsubscribeId\nnhcarrigan@gmail.com,1\nnaomi@freecodecamp.org,2`,
     );
     const result = await getValid();
-    const expected: EmailInt[] = [
+    const expected: Array<EmailInt> = [
       { email: "nhcarrigan@gmail.com", unsubscribeId: "1" },
-      { email: "naomi@freecodecamp.org", unsubscribeId: "2" }
+      { email: "naomi@freecodecamp.org", unsubscribeId: "2" },
     ];
-    assert.isArray(result, "did not return an array");
-    assert.deepEqual(result, expected, "did not return correct data");
-    assert.deepEqual(
-      result[0],
+    expect(Array.isArray(result), "is not an array").toBeTruthy();
+    expect(result, "does not have correct length").toHaveLength(2);
+    expect(result[0], "does not have correct first entry").toStrictEqual(
       expected[0],
-      "did not return correct data for first entry"
     );
-    assert.deepEqual(
-      result[1],
+    expect(result[1], "does not have correct second entry").toStrictEqual(
       expected[1],
-      "did not return correct data for second entry"
     );
     await unlink(filePath);
   });
 
-  test("should return empty array on missing file", async () => {
+  it("should return empty array on missing file", async() => {
+    expect.assertions(2);
     const result = await getValid();
-    assert.isArray(result, "did not return an array");
-    assert.equal(result.length, 0, "did not return an empty array");
+    expect(Array.isArray(result), "is not an array").toBeTruthy();
+    expect(result, "does not have correct length").toHaveLength(0);
   });
 });

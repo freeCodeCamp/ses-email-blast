@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint ./src/",
+    "lint": "eslint src test --max-warnings 0",
     "start": "op run --no-masking --env-file='./prod.env' -- node prod/index.js",
     "test": "vitest run --coverage"
   },
@@ -24,15 +24,15 @@
     "pnpm": "9"
   },
   "devDependencies": {
-    "@nhcarrigan/eslint-config": "4.0.0",
+    "@nhcarrigan/eslint-config": "5.0.0",
     "@nhcarrigan/typescript-config": "4.0.0",
     "@types/cli-progress": "3.11.6",
     "@types/inquirer": "9.0.7",
     "@types/node": "22.10.1",
+    "@types/spinnies": "0.5.3",
     "@vitest/coverage-istanbul": "2.1.8",
     "eslint": "9.16.0",
     "pre-commit": "1.2.2",
-    "prettier": "3.4.2",
     "typescript": "5.7.2",
     "vitest": "2.1.8"
   },

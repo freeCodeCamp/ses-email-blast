@@ -1,37 +1,40 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/**
+ * @copyright nhcarrigan
+ * @license Naomi's Public License
+ * @author Naomi Carrigan
+ */
+
 import {
   SESClient,
-  SESClientConfig,
+  type SESClientConfig,
   SendEmailCommand,
-  SendEmailRequest
+  type SendEmailRequest,
 } from "@aws-sdk/client-ses";
-
-import { ConfigInt } from "../interfaces/configInt.js";
-import { EmailInt } from "../interfaces/emailInt.js";
-import { sendReportInt } from "../interfaces/sendReportInt.js";
+import type { ConfigInt } from "../interfaces/configInt.js";
+import type { EmailInt } from "../interfaces/emailInt.js";
+import type { SendReportInt } from "../interfaces/sendReportInt.js";
 
 /**
  * Sends an email with the passed configuration and body to the passed email address.
  * Replaces the {{unsubscribeId}} body string with the email's actual unsubscribeId.
- *
- * @param {ConfigInt} config The configuration object from getEnv.
- * @param {EmailInt} email The email and unsubscribeId to send to.
- * @param {string} body The email body text from emailBody.txt.
- * @returns {Promise<sendReportInt>} Returns sendReportInt.
+ * @param config - The configuration object from getEnv.
+ * @param email - The email and unsubscribeId to send to.
+ * @param body - The email body text from emailBody.txt.
+ * @returns Returns SendReportInt.
  */
-export const sendEmail = async (
+// eslint-disable-next-line max-lines-per-function
+export const sendEmail = async(
   config: ConfigInt,
   email: EmailInt,
-  body: string
-): Promise<sendReportInt> => {
-  /**
-   * Break out of process if missing email or unsubscribeId.
-   */
-  if (!email.email || !email.unsubscribeId) {
+  body: string,
+): Promise<SendReportInt> => {
+  if (email.email === "" || email.unsubscribeId === "") {
     return {
-      status: "ERROR",
+      email:   email.email,
+      logText: `Email or Unsubscribe ID missing...`,
+      status:  "ERROR",
       success: false,
-      email: email.email || "",
-      logText: `Email or Unsubscribe ID missing...`
     };
   }
 
@@ -39,33 +42,34 @@ export const sendEmail = async (
    * Set the AWS API key.
    */
   const awsConfig: SESClientConfig = {
+    apiVersion:  "2010-12-01",
     credentials: {
-      accessKeyId: config.accessKeyId,
-      secretAccessKey: config.secretAccessKey
+      accessKeyId:     config.accessKeyId,
+      secretAccessKey: config.secretAccessKey,
     },
     region: "us-east-2",
-    apiVersion: "2010-12-01"
   };
+
   /**
    * Construct SendGrid message object.
    */
   const message: SendEmailRequest = {
     Destination: {
-      ToAddresses: [email.email]
+      ToAddresses: [ email.email ],
     },
     Message: {
-      Subject: {
-        Data: config.subject,
-        Charset: "UTF-8"
-      },
       Body: {
         Text: {
           Charset: "UTF-8",
-          Data: body.replace("{{unsubscribeId}}", email.unsubscribeId)
-        }
-      }
+          Data:    body.replace("{{unsubscribeId}}", email.unsubscribeId),
+        },
+      },
+      Subject: {
+        Charset: "UTF-8",
+        Data:    config.subject,
+      },
     },
-    Source: config.fromAddress
+    Source: config.fromAddress,
   };
 
   const client = new SESClient(awsConfig);
@@ -75,24 +79,24 @@ export const sendEmail = async (
     const success = await client.send(command);
     if (success.$metadata.httpStatusCode !== 200) {
       return {
-        status: "FAILED",
+        email:   email.email,
+        logText: `API reported error ${success.$metadata.httpStatusCode?.toString() ?? "XXX"}.`,
+        status:  "FAILED",
         success: false,
-        email: email.email,
-        logText: `API reported error ${success.$metadata.httpStatusCode}.`
       };
     }
     return {
-      status: "PASSED",
+      email:   email.email,
+      logText: `Email successfully sent!`,
+      status:  "PASSED",
       success: true,
-      email: email.email,
-      logText: `Email successfully sent!`
     };
   } catch (error) {
     return {
-      status: "ERROR",
+      email:   email.email,
+      logText: `API reported error ${JSON.stringify(error, null, 2)}`,
+      status:  "ERROR",
       success: false,
-      email: email.email || "",
-      logText: `API reported error ${error}`
     };
   }
 };
