@@ -1,51 +1,73 @@
+/**
+ * @copyright nhcarrigan
+ * @license Naomi's Public License
+ * @author Naomi Carrigan
+ */
+
 import chalk from "chalk";
-import { Options, Params } from "cli-progress";
+import type { Options, Params } from "cli-progress";
 
 /**
  * Generates progress bars for the terminal.
- *
- * @param {Options} options The progress bar option object.
- * @param {Params} params The progress bar parameters object.
- * @returns {string} The formatted progress bar.
+ * @param options - The progress bar option object.
+ * @param parameters - The progress bar parameters object.
+ * @param payload - The progress bar payload object.
+ * @returns The formatted progress bar.
  */
+// eslint-disable-next-line complexity, max-lines-per-function
 export const barFormatter = (
   options: Options,
-  params: Params,
-  payload: { [key: string]: string }
+  parameters: Params,
+  payload: Record<string, string>,
 ): string => {
-  const bar = (options.barCompleteString || "=").substring(
+  const bar = (options.barCompleteString ?? "=").slice(
     0,
-    Math.round(params.progress * (options.barsize || 40))
+    Math.max(0, Math.round(parameters.progress * (options.barsize ?? 40))),
   );
-  const barIncomplete = options.barIncompleteString?.substring(
+  const barIncomplete = options.barIncompleteString?.slice(
     0,
-    options.barIncompleteString.length - bar.length
-  );
-  const percentage = Math.floor(params.progress * 10000) / 100;
+    Math.max(0, options.barIncompleteString.length - bar.length),
+  ).toString() ?? "";
+  const percentage = (Math.floor(parameters.progress * 10_000) / 100).
+    toString();
 
-  const etaTime = params.eta;
-  const etaHours = etaTime >= 3600 ? etaTime / 3600 : 0;
-  const etaMinutes = etaTime >= 60 ? (etaTime % 3600) / 60 : 0;
+  const value = parameters.value.toString();
+  const total = parameters.total.toString();
+  const etaTime = parameters.eta;
+  const etaMinutesRemaining = etaTime % 3600;
+  const etaHours = etaTime >= 3600
+    ? etaTime / 3600
+    : 0;
+  const etaMinutes = etaTime >= 60
+    ? etaMinutesRemaining / 60
+    : 0;
   const etaSeconds = (etaTime - etaHours - etaMinutes) % 60;
   switch (payload.task) {
     case "Processed":
       return chalk.cyan(
-        `Processed: [${bar}${barIncomplete}] | ${percentage}% complete! | ETA: ${~~etaHours}h ${~~etaMinutes}m ${~~etaSeconds}s | ${
-          params.value
-        }/${params.total}`
+        `Processed: [${bar}${barIncomplete}] | ${percentage}% complete! | ETA: ${Math.trunc(etaHours).toString()}h ${Math.trunc(etaMinutes).toString()}m ${Math.trunc(etaSeconds).toString()}s | ${
+          value
+        }/${total}`,
       );
     case "Sent":
       return chalk.green(
-        `     Sent: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${params.value}`
+        `     Sent: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${value}`,
       );
     case "Failed":
       return chalk.red(
-        `   Failed: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${params.value}`
+        `   Failed: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${value}`,
       );
     case "Skipped":
       return chalk.yellow(
-        `  Skipped: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${params.value}`
+        `  Skipped: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${value}`,
+      );
+    case undefined:
+      return chalk.white(
+        `  Unknown: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${value}`,
+      );
+    default:
+      return chalk.white(
+        `  Unknown: [${bar}${barIncomplete}] | ${percentage}% of processed emails | ${value}`,
       );
   }
-  return ``;
 };
