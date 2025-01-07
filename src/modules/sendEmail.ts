@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention -- That one object is an underscore mess thanks to AWS. */
 /**
  * @copyright nhcarrigan
  * @license Naomi's Public License
@@ -23,7 +23,7 @@ import type { SendReportInt } from "../interfaces/sendReportInt.js";
  * @param body - The email body text from emailBody.txt.
  * @returns Returns SendReportInt.
  */
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function -- Will refactor at some point.
 export const sendEmail = async(
   config: ConfigInt,
   email: EmailInt,

@@ -6,7 +6,7 @@
 
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-// eslint-disable-next-line @typescript-eslint/naming-convention
+// eslint-disable-next-line @typescript-eslint/naming-convention -- Pascal Case because it's a class.
 import Spinnies from "spinnies";
 
 const spinnies = new Spinnies({
