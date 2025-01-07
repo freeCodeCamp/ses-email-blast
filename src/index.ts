@@ -33,7 +33,7 @@ const isInScreenEnvironment = (): boolean => {
 console.info(chalk.green(`Hello! Launching email blast application.`));
 if (!isInScreenEnvironment()) {
   throw new Error(
-    // eslint-disable-next-line stylistic/max-len
+    // eslint-disable-next-line stylistic/max-len -- This is a single string.
     "You must run this script in a screen session to persist the process after closing the SSH connection.",
   );
 }
@@ -44,7 +44,7 @@ if (!isInScreenEnvironment()) {
 const configuration = await getEnvironment();
 if (!configuration.valid) {
   throw new Error(
-    // eslint-disable-next-line stylistic/max-len
+    // eslint-disable-next-line stylistic/max-len -- This is a single string.
     "Environment variables are not configured correctly. Please check the .env file.",
   );
 }
@@ -135,24 +135,20 @@ for (let index = 0; index < emailTotal; index = index + 1) {
   if (!targetEmail) {
     continue;
   }
-  // eslint-disable-next-line no-await-in-loop
+  // eslint-disable-next-line no-await-in-loop -- I cannot run these concurrently or the API would shit itself at scale.
   const status = await sendEmail(configuration, targetEmail, body);
   if (!status.success) {
-    logStream.write(
-      `${status.status} - ${status.email} - ${status.logText}\n`,
+    failedBar.increment();
+    failureStream.write(
+      `${targetEmail.email},${targetEmail.unsubscribeId}\n`,
     );
-    sentBar.increment();
     continue;
   }
-  failedBar.increment();
-  failureStream.write(
-    `${targetEmail.email},${targetEmail.unsubscribeId}\n`,
-  );
   logStream.write(
     `${status.status} - ${status.email} - ${status.logText}\n`,
   );
+  sentBar.increment();
 }
-
 progress.stop();
 
 console.info(chalk.green("Email blast complete! Have a nice day! :)"));

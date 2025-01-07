@@ -6,7 +6,7 @@
 
 import chalk from "chalk";
 import inquirer from "inquirer";
-// eslint-disable-next-line @typescript-eslint/naming-convention
+// eslint-disable-next-line @typescript-eslint/naming-convention -- Pascal Case because it's a class.
 import Spinnies from "spinnies";
 import { sendEmail } from "./sendEmail.js";
 import type { ConfigInt } from "../interfaces/configInt.js";
@@ -36,7 +36,7 @@ const spinnies = new Spinnies({
  * @param body - The email body text from getBody.
  * @returns True if test is skipped, true if test succeeds, false if failed.
  */
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function -- Will refactor at some point.
 export const emailTest = async(
   config: ConfigInt,
   body: string,

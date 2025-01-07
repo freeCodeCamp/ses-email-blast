@@ -14,7 +14,7 @@ import type { Options, Params } from "cli-progress";
  * @param payload - The progress bar payload object.
  * @returns The formatted progress bar.
  */
-// eslint-disable-next-line complexity, max-lines-per-function
+// eslint-disable-next-line complexity, max-lines-per-function -- Will refactor at some point.
 export const barFormatter = (
   options: Options,
   parameters: Params,

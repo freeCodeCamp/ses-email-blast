@@ -6,7 +6,7 @@
 
 import chalk from "chalk";
 import inquirer from "inquirer";
-// eslint-disable-next-line @typescript-eslint/naming-convention
+// eslint-disable-next-line @typescript-eslint/naming-convention -- Pascal Case because it's a class.
 import Spinnies from "spinnies";
 import type { ConfigInt } from "../interfaces/configInt.js";
 
@@ -32,7 +32,7 @@ const spinnies = new Spinnies({
  * @returns Returns the configuration object. The valid property is true
  * on success, false on missing/invalid values.
  */
-// eslint-disable-next-line max-lines-per-function, max-statements
+// eslint-disable-next-line max-lines-per-function, max-statements -- Will refactor at some point.
 export const getEnvironment = async(): Promise<ConfigInt> => {
   const results: ConfigInt = {
     accessKeyId:     "",
