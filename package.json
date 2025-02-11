@@ -24,7 +24,7 @@
     "pnpm": "9"
   },
   "devDependencies": {
-    "@nhcarrigan/eslint-config": "5.1.0",
+    "@nhcarrigan/eslint-config": "5.2.0",
     "@nhcarrigan/typescript-config": "4.0.0",
     "@types/cli-progress": "3.11.6",
     "@types/inquirer": "9.0.7",
