@@ -28,7 +28,7 @@
     "@nhcarrigan/typescript-config": "4.0.0",
     "@types/cli-progress": "3.11.6",
     "@types/inquirer": "9.0.7",
-    "@types/node": "22.13.17",
+    "@types/node": "22.14.0",
     "@types/spinnies": "0.5.3",
     "@vitest/coverage-istanbul": "2.1.9",
     "eslint": "9.23.0",
