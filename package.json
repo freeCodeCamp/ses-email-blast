@@ -37,7 +37,7 @@
     "vitest": "2.1.9"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.844.0",
+    "@aws-sdk/client-ses": "3.846.0",
     "chalk": "5.4.1",
     "cli-progress": "3.12.0",
     "dotenv": "16.6.1",
