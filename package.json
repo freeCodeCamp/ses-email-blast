@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "3.859.0",
-    "chalk": "5.4.1",
+    "chalk": "5.5.0",
     "cli-progress": "3.12.0",
     "dotenv": "16.6.1",
     "inquirer": "12.9.0",
