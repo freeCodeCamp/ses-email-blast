@@ -21,7 +21,7 @@
   "homepage": "https://github.com/nhcarrigan/SendGrid-Experiment#readme",
   "engines": {
     "node": "22",
-    "pnpm": "9"
+    "pnpm": "12"
   },
   "devDependencies": {
     "@nhcarrigan/eslint-config": "5.2.0",
