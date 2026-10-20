@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@aws-sdk/client-ses':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1151.0
+        version: 3.1151.0
       chalk:
         specifier: 5.6.2
         version: 5.6.2
@@ -71,8 +71,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@aws-sdk/client-ses@3.1149.0':
-    resolution: {integrity: sha512-SgqZO/azgITEPrUvcEzGYwQF257P3GPmGL26TsfdjF06qj7YZQwmyi4pTrywp7mCyBPsCpAaPKJSOZVQbV4Zog==}
+  '@aws-sdk/client-ses@3.1151.0':
+    resolution: {integrity: sha512-om6b6o684HCtL0LWTonJSNpGMsOEIumbJC3+IYcGAA/16pEWSyRtop87sfLz7EABSKUrNWVkrF/L1izmKscoZg==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.978.3':
@@ -2531,7 +2531,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@aws-sdk/client-ses@3.1149.0':
+  '@aws-sdk/client-ses@3.1151.0':
     dependencies:
       '@aws-sdk/core': 3.978.3
       '@aws-sdk/credential-provider-node': 3.972.86
