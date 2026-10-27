@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@aws-sdk/client-ses':
-        specifier: 3.1152.0
-        version: 3.1152.0
+        specifier: 3.1153.0
+        version: 3.1153.0
       chalk:
         specifier: 5.6.2
         version: 5.6.2
@@ -63,8 +63,8 @@ importers:
 
 packages:
 
-  '@aws-sdk/client-ses@3.1152.0':
-    resolution: {integrity: sha512-iafV/J0KAbj5oB98NeSVBPl7yNrvNdReO3PUQ1icCwdCQvModFpW3kCEjUcRlxyIuQbtVJ3V6XSY7sxOaYN5jg==}
+  '@aws-sdk/client-ses@3.1153.0':
+    resolution: {integrity: sha512-znAL7AX9JJN9QRRziqmdtAQnO9qB4w97xcJHxuWoDIiUexbeAesxQ3kafw/KHFKE84LUlUaJf5EcRpDBhM2aeQ==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.978.5':
@@ -2651,7 +2651,7 @@ packages:
 
 snapshots:
 
-  '@aws-sdk/client-ses@3.1152.0':
+  '@aws-sdk/client-ses@3.1153.0':
     dependencies:
       '@aws-sdk/core': 3.978.5
       '@aws-sdk/credential-provider-node': 3.972.88
