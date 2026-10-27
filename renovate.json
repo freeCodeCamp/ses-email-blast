@@ -1,5 +1,6 @@
 {
   "extends": [
-    "github>freeCodeCamp/renovate-config"
+    "github>freeCodeCamp/renovate-config",
+    "github>freeCodeCamp/renovate-config:automerge"
   ]
 }
