@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@aws-sdk/client-ses':
-        specifier: 3.1165.0
-        version: 3.1165.0
+        specifier: 3.1166.0
+        version: 3.1166.0
       chalk:
         specifier: 5.6.2
         version: 5.6.2
@@ -63,8 +63,8 @@ importers:
 
 packages:
 
-  '@aws-sdk/client-ses@3.1165.0':
-    resolution: {integrity: sha512-AkgwEY0iAW6oY8OETdwT7BbJZxt+KUWmxFz8CJhzpZVNoTM3i1cXHHmQKVj3itSxhQdw79z4jDy9jPoDhnZkaA==}
+  '@aws-sdk/client-ses@3.1166.0':
+    resolution: {integrity: sha512-4N4YHvkgpFHz87kJ6YWLb82+5WliUg7x2RA3tz54hv5FAtY3NU8Na1+AqvvQUOlr99LeI60x2hDWiJPnVxT3Pw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.981.0':
@@ -747,10 +747,6 @@ packages:
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
-
-  '@smithy/core@3.39.0':
-    resolution: {integrity: sha512-JJ/46AWQ4ipS1N2eZmUj7yzIhH8NhQIfAE+dce7NSB6dmFh+7hvD4pbofcoT4I0Xzfy/LNhZx3V2QhwYyAiqdg==}
-    engines: {node: '>=18.0.0'}
 
   '@smithy/core@3.41.0':
     resolution: {integrity: sha512-fuZ34H1uizS3WgcX9VXG7Uy8od5A5/kCc+CR3NkHLNm2H/BE9AUHG02VIdu8ZB7FYhLqsr/RZbqAoXuOCg/Oxg==}
@@ -2654,12 +2650,12 @@ packages:
 
 snapshots:
 
-  '@aws-sdk/client-ses@3.1165.0':
+  '@aws-sdk/client-ses@3.1166.0':
     dependencies:
       '@aws-sdk/core': 3.981.0
       '@aws-sdk/credential-provider-node': 3.972.97
       '@aws-sdk/types': 3.975.1
-      '@smithy/core': 3.39.0
+      '@smithy/core': 3.41.0
       '@smithy/fetch-http-handler': 5.8.1
       '@smithy/node-http-handler': 4.14.2
       '@smithy/types': 4.20.0
@@ -3349,11 +3345,6 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@smithy/core@3.39.0':
-    dependencies:
-      '@smithy/types': 4.20.0
-      tslib: 2.9.1
-
   '@smithy/core@3.41.0':
     dependencies:
       '@smithy/types': 4.20.0
@@ -3367,13 +3358,13 @@ snapshots:
 
   '@smithy/fetch-http-handler@5.8.1':
     dependencies:
-      '@smithy/core': 3.39.0
+      '@smithy/core': 3.41.0
       '@smithy/types': 4.20.0
       tslib: 2.9.1
 
   '@smithy/node-http-handler@4.14.2':
     dependencies:
-      '@smithy/core': 3.39.0
+      '@smithy/core': 3.41.0
       '@smithy/types': 4.20.0
       tslib: 2.9.1
 
